@@ -1,7 +1,7 @@
 
-DROP  SCHEMA IF EXISTS heroku_79525cdf06e353b;
-CREATE SCHEMA heroku_79525cdf06e353b;
-USE heroku_79525cdf06e353b;
+DROP  SCHEMA IF EXISTS `cs5200_fall2019_rastogi`;
+CREATE SCHEMA `cs5200_fall2019_rastogi`;
+USE `cs5200_fall2019_rastogi`;
 -- Drop all tables --
 DROP TABLE IF EXISTS `website_role`;
 DROP TABLE IF EXISTS `website_priviledge`;

@@ -1,4 +1,4 @@
-USE heroku_79525cdf06e353b;
+USE `cs5200_fall2019_rastogi`;
 SET SQL_SAFE_UPDATES = 0;
 -- Delete Alice's primary address
 DELETE FROM `address` 

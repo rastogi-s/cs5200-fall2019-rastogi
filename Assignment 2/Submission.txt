@@ -1,4 +1,0 @@
-connection string = 
-hostname = 
-password = 
-port = 

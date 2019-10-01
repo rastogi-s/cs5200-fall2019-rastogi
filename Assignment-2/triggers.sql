@@ -1,4 +1,4 @@
-USE heroku_79525cdf06e353b;
+USE `cs5200_fall2019_rastogi`;
 DROP TRIGGER IF EXISTS `after_website_role_insert`;
 DROP TRIGGER IF EXISTS `after_website_role_update`;
 DROP TRIGGER IF EXISTS `after_website_role_delete`;

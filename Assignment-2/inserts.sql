@@ -1,4 +1,4 @@
-USE heroku_79525cdf06e353b;
+USE `cs5200_fall2019_rastogi`;
 SET FOREIGN_KEY_CHECKS = 0; 
 TRUNCATE TABLE `website_role`;
 TRUNCATE TABLE `website_priviledge`;

@@ -1,0 +1,5 @@
+connection string = 
+hostname = cs5200-fall2019-rastogi.caobcohwr5ry.us-east-1.rds.amazonaws.com
+username = admin
+password = rastogis
+port = 3306

@@ -1,4 +1,4 @@
-USE heroku_79525cdf06e353b;
+USE `cs5200_fall2019_rastogi`;
 
 -- retrieve all developers
 SELECT 

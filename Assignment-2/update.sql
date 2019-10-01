@@ -1,4 +1,4 @@
-USE heroku_79525cdf06e353b;
+USE `cs5200_fall2019_rastogi`;
 -- Update developer - Update Charlie's primary phone number to 333-444-5555
 
 UPDATE `phone` 
