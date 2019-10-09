@@ -1,4 +1,4 @@
-# Integrating Spring Boot with MySQL
+# `Integrating Spring Boot with MySQL`
 
 
 1. [Insert a static hello message](http://cs5200-fall2019-rastogi-proj2.us-east-1.elasticbeanstalk.com/api/hello/insert)
