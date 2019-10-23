@@ -224,7 +224,7 @@ public class Utility {
 				return new YouTubeWidget(resultSet.getInt("id"), resultSet.getString("name"), resultSet.getInt("width"),
 						resultSet.getInt("height"), resultSet.getString("css_class"), resultSet.getString("css_style"),
 						resultSet.getString("text"), resultSet.getInt("order"), resultSet.getString("youtube_url"),
-						resultSet.getBoolean("youtube_shareble"), resultSet.getBoolean("youtube_expandable"));
+						resultSet.getBoolean("youtube_sharable"), resultSet.getBoolean("youtube_expandable"));
 			}
 		}
 		return null;
