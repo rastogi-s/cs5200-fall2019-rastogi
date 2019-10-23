@@ -4,6 +4,9 @@ CREATE SCHEMA `cs5200_fall2019_rastogi-assign3`;
 USE `cs5200_fall2019_rastogi-assign3`;
 
 -- Drop all tables --
+DROP TABLE IF EXISTS `answer`;
+DROP TABLE IF EXISTS `question`;
+DROP TABLE IF EXISTS `module`;
 DROP TABLE IF EXISTS `website_role`;
 DROP TABLE IF EXISTS `website_priviledge`;
 DROP TABLE IF EXISTS `page_role`;
@@ -213,11 +216,63 @@ CREATE TABLE `widget` (
         REFERENCES `page` (`id`)
 );
 
+CREATE TABLE `module` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `name` VARCHAR(50)
+);
+
+
+CREATE TABLE `question` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `name` VARCHAR(50),
+    `width` INT,
+    `height` INT,
+    `css_class` VARCHAR(50),
+    `css_style` VARCHAR(50),
+    `text` VARCHAR(50),
+    `order` INT,
+    `asked_by` INT,
+    `posted_on` DATE,
+    `length` INT,
+    `views` INT,
+    `endorsed_by_instructor` BOOLEAN,
+    `module_id` INT,
+    CONSTRAINT `question_user_association` FOREIGN KEY (`asked_by`)
+        REFERENCES `user` (`id`),
+    CONSTRAINT `question_module_enum` FOREIGN KEY (`module_id`)
+        REFERENCES `module` (`id`)
+);
+
+CREATE TABLE `answer` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `name` VARCHAR(50),
+    `width` INT,
+    `height` INT,
+    `css_class` VARCHAR(50),
+    `css_style` VARCHAR(50),
+    `text` VARCHAR(50),
+    `order` INT,
+    `posted_by` INT,
+    `posted_on` DATE,
+    `correct_answer` BOOLEAN,
+    `up_votes` INT,
+    `down_votes` INT,
+    `question_id` INT,
+    CONSTRAINT `answer_question_association` FOREIGN KEY (`question_id`)
+        REFERENCES `question` (`id`),
+    CONSTRAINT `answer_user_association` FOREIGN KEY (`posted_by`)
+        REFERENCES `user` (`id`)
+);
+
+
+
 -- Insert data into ennumerations --
 
 INSERT INTO `priviledge` values('create'),('read'),('update'),('delete');
 INSERT INTO `role` (`name`) values('owner'),('admin'),('writer'),('editor'),('reviewer');
 INSERT INTO `dtype` values('youtube'),('image'),('heading'),('html');
+INSERT INTO `module` (`name`) VALUES ('Project1'),('Project2'),('Assignment1'),('Assignment2'),('Quiz1'),('Exam'),('Logistics');
+
 
 USE `cs5200_fall2019_rastogi-assign3`;
 DROP TRIGGER IF EXISTS `after_website_role_insert`;
@@ -313,4 +368,5 @@ BEGIN
 DELETE FROM  `page_priviledge` WHERE `did` = OLD.`did` AND `page_id`= OLD.`page_id`;
 END//
   
+
 
