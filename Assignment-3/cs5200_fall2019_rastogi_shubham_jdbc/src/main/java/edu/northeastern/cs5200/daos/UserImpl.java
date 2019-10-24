@@ -4,6 +4,9 @@ import java.util.Collection;
 
 import edu.northeastern.cs5200.models.User;
 
+/**
+ * The Interface UserImpl.
+ */
 public interface UserImpl {
 	
 	/**

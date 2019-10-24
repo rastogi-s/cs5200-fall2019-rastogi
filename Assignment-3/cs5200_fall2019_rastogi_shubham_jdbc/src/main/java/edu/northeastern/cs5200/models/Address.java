@@ -57,7 +57,7 @@ public class Address {
 	 *
 	 * @param id the id
 	 * @param street1 the street 1
-	 * @param street3 the street 2
+	 * @param street2 the street 2
 	 * @param city the city
 	 * @param state the state
 	 * @param zip the zip
@@ -104,7 +104,7 @@ public class Address {
 	/**
 	 * Sets the street 2.
 	 *
-	 * @param street3 the new street 2
+	 * @param street2 the new street 2
 	 */
 	public void setStreet2(String street2) {
 		this.street2 = street2;

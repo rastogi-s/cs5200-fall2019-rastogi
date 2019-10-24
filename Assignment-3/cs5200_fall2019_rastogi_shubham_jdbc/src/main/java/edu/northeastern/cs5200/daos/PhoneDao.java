@@ -9,29 +9,67 @@ import edu.northeastern.cs5200.Utility;
 import edu.northeastern.cs5200.models.Phone;
 
 
+/**
+ * The Class PhoneDao.
+ */
 public class PhoneDao implements PhoneImpl {
 
+	/** The instance. */
 	private static PhoneDao instance;
+	
+	/** The connection. */
 	private Connection connection;
+	
+	/** The prep statement. */
 	private PreparedStatement prepStatement;
+	
+	/** The result set. */
 	private ResultSet resultSet;
+	
+	/** The add phone person. */
 	private final String ADD_PHONE_PERSON = "INSERT INTO `phone`(`pid`,`phone`,`primary`) VALUES(?,?,?)";
+	
+	/** The find all phones person. */
 	private final String FIND_ALL_PHONES_PERSON = "SELECT * FROM `phone` WHERE `pid` = ?";
+	
+	/** The find phone by id. */
 	private final String FIND_PHONE_BY_ID = "SELECT * FROM `phone` WHERE `id` = ?";
+	
+	/** The update primary phone. */
 	private final String UPDATE_PRIMARY_PHONE = "UPDATE `phone` SET `phone` = ? WHERE `pid` = ? AND `primary` = 1";
+	
+	/** The update phone. */
 	private final String UPDATE_PHONE = "UPDATE `phone` SET `phone` = ?,`pid` = ? WHERE `id` = ? ";
+	
+	/** The delete phone. */
 	private final String DELETE_PHONE = "DELETE FROM `phone` WHERE `id` = ?";
+	
+	/** The delete all phones person. */
 	private final String DELETE_ALL_PHONES_PERSON = "DELETE FROM `phone` WHERE `pid` = ?";
 
+	/**
+	 * Instantiates a new phone dao.
+	 */
 	private PhoneDao() {
 	}
 
+	/**
+	 * Gets the single instance of PhoneDao.
+	 *
+	 * @return single instance of PhoneDao
+	 */
 	public static PhoneDao getInstance() {
 		if (instance == null)
 			instance = new PhoneDao();
 		return instance;
 	}
 
+	/**
+	 * Adds the phone to person.
+	 *
+	 * @param phone the phone
+	 * @param personId the person id
+	 */
 	@Override
 	public void addPhoneToPerson(Phone phone, int personId) {
 		try {
@@ -46,6 +84,12 @@ public class PhoneDao implements PhoneImpl {
 		}
 	}
 
+	/**
+	 * Find all phones for person.
+	 *
+	 * @param personId the person id
+	 * @return the collection
+	 */
 	@Override
 	public Collection<Phone> findAllPhonesForPerson(int personId) {
 		try {
@@ -63,6 +107,12 @@ public class PhoneDao implements PhoneImpl {
 		return null;
 	}
 
+	/**
+	 * Find phone by id.
+	 *
+	 * @param phoneId the phone id
+	 * @return the phone
+	 */
 	@Override
 	public Phone findPhoneById(int phoneId) {
 		try {
@@ -79,6 +129,13 @@ public class PhoneDao implements PhoneImpl {
 		return null;
 	}
 
+	/**
+	 * Update primary phone.
+	 *
+	 * @param personId the person id
+	 * @param phone the phone
+	 * @return the int
+	 */
 	@Override
 	public int updatePrimaryPhone(int personId, Phone phone) {
 		try {
@@ -93,6 +150,13 @@ public class PhoneDao implements PhoneImpl {
 		return 0;
 	}
 
+	/**
+	 * Update phone.
+	 *
+	 * @param phoneId the phone id
+	 * @param phone the phone
+	 * @return the int
+	 */
 	@Override
 	public int updatePhone(int phoneId, Phone phone) {
 		try {
@@ -109,6 +173,12 @@ public class PhoneDao implements PhoneImpl {
 		return 0;
 	}
 
+	/**
+	 * Delete phone.
+	 *
+	 * @param phoneId the phone id
+	 * @return the int
+	 */
 	@Override
 	public int deletePhone(int phoneId) {
 		try {
@@ -122,6 +192,12 @@ public class PhoneDao implements PhoneImpl {
 		return 0;
 	}
 
+	/**
+	 * Delete all phones for person.
+	 *
+	 * @param personId the person id
+	 * @return the int
+	 */
 	@Override
 	public int deleteAllPhonesForPerson(int personId) {
 		try {

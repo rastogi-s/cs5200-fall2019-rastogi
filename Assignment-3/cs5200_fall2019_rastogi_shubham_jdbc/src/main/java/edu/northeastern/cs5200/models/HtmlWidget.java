@@ -20,6 +20,7 @@ public class HtmlWidget extends Widget {
 	 * @param cssStyle the css style
 	 * @param text the text
 	 * @param order the order
+	 * @param html the html
 	 */
 	public HtmlWidget(int id, String name, int width, int height, String cssClass, String cssStyle, String text,
 			int order,String html) {

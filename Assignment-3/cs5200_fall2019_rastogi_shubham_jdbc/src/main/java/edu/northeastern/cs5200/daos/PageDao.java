@@ -10,28 +10,64 @@ import java.util.Collection;
 import edu.northeastern.cs5200.Utility;
 import edu.northeastern.cs5200.models.Page;
 
+/**
+ * The Class PageDao.
+ */
 public class PageDao implements PageImpl {
 
+	/** The instance. */
 	private static PageDao instance;
+	
+	/** The connection. */
 	private Connection connection;
+	
+	/** The prep statement. */
 	private PreparedStatement prepStatement;
+	
+	/** The result set. */
 	private ResultSet resultSet;
+	
+	/** The create page. */
 	private final String CREATE_PAGE = "INSERT INTO `page`(`id`,`title`,`description`,`views`,`created`,`updated`,`wid`) VALUES (?,?,?,?,?,?,?)";
+	
+	/** The find all pages. */
 	private final String FIND_ALL_PAGES = "SELECT *  FROM `page`";
+	
+	/** The find pages for website. */
 	private final String FIND_PAGES_FOR_WEBSITE = "SELECT *  FROM `page` WHERE `wid` = ?";
+	
+	/** The find page by id. */
 	private final String FIND_PAGE_BY_ID = "SELECT *  FROM `page` WHERE `id` = ?";
+	
+	/** The update page. */
 	private final String UPDATE_PAGE = "UPDATE `page` SET `title`= ?,`description` = ?,`views`=?, `created`=?, `updated`=?,`wid`= ?  WHERE `id` = ?";
+	
+	/** The delete page. */
 	private final String DELETE_PAGE = "DELETE FROM `page` WHERE `id` = ?";
 
+	/**
+	 * Instantiates a new page dao.
+	 */
 	private PageDao() {
 	}
 
+	/**
+	 * Gets the single instance of PageDao.
+	 *
+	 * @return single instance of PageDao
+	 */
 	public static PageDao getInstance() {
 		if (instance == null)
 			instance = new PageDao();
 		return instance;
 	}
 
+	/**
+	 * Creates the page for website.
+	 *
+	 * @param websiteId the website id
+	 * @param page the page
+	 */
 	@Override
 	public void createPageForWebsite(int websiteId, Page page) {
 		try {
@@ -50,6 +86,11 @@ public class PageDao implements PageImpl {
 		}
 	}
 
+	/**
+	 * Find all pages.
+	 *
+	 * @return the collection
+	 */
 	@Override
 	public Collection<Page> findAllPages() {
 		try {
@@ -66,6 +107,12 @@ public class PageDao implements PageImpl {
 		return null;
 	}
 
+	/**
+	 * Find page by id.
+	 *
+	 * @param pageId the page id
+	 * @return the page
+	 */
 	@Override
 	public Page findPageById(int pageId) {
 		try {
@@ -82,6 +129,12 @@ public class PageDao implements PageImpl {
 		return null;
 	}
 
+	/**
+	 * Find pages for website.
+	 *
+	 * @param websiteId the website id
+	 * @return the collection
+	 */
 	@Override
 	public Collection<Page> findPagesForWebsite(int websiteId) {
 		try {
@@ -97,6 +150,13 @@ public class PageDao implements PageImpl {
 		return null;
 	}
 
+	/**
+	 * Update page.
+	 *
+	 * @param pageId the page id
+	 * @param page the page
+	 * @return the int
+	 */
 	@Override
 	public int updatePage(int pageId, Page page) {
 		try {
@@ -116,6 +176,12 @@ public class PageDao implements PageImpl {
 		return 0;
 	}
 
+	/**
+	 * Delete page.
+	 *
+	 * @param pageId the page id
+	 * @return the int
+	 */
 	@Override
 	public int deletePage(int pageId) {
 		try {

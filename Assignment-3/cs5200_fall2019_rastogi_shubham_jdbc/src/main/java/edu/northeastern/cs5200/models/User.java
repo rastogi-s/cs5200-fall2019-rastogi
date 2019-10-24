@@ -3,7 +3,6 @@ package edu.northeastern.cs5200.models;
 import java.sql.Date;
 import java.util.Collection;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class User.
  */
@@ -94,6 +93,11 @@ public class User extends Person {
 		this.userAgreement = userAgreement;
 	}
 
+	/**
+	 * To string.
+	 *
+	 * @return the string
+	 */
 	@Override
 	public String toString() {
 		return "User [userAgreement=" + userAgreement + ", getPhones()=" + getPhones() + ", getAddresses()="

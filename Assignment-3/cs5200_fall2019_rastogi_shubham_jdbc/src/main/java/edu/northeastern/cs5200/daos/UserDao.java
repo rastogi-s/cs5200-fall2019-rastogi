@@ -10,30 +10,69 @@ import edu.northeastern.cs5200.Utility;
 import edu.northeastern.cs5200.models.Person;
 import edu.northeastern.cs5200.models.User;
 
+/**
+ * The Class UserDao.
+ */
 public class UserDao implements UserImpl {
 
+	/** The instance. */
 	private static UserDao instance;
+	
+	/** The person instance. */
 	private static PersonDao personInstance;
+	
+	/** The connection. */
 	private Connection connection;
+	
+	/** The prep statement. */
 	private PreparedStatement prepStatement;
+	
+	/** The result set. */
 	private ResultSet resultSet;
+	
+	/** The create user. */
 	private final String CREATE_USER = "INSERT INTO `user`(`id`,`user_agreement`) VALUES (?,?)";
+	
+	/** The find all users. */
 	private final String FIND_ALL_USERS = "SELECT `p`.*, `d`.*  FROM `user` `d` JOIN `person` p ON `d`.`id` = `p`.`id`";
+	
+	/** The find user by id. */
 	private final String FIND_USER_BY_ID = "SELECT `p`.*, `d`.*  FROM `user` `d` JOIN `person` p ON `d`.`id` = `p`.`id` AND `d`.`id` = ?";
+	
+	/** The find user by username. */
 	private final String FIND_USER_BY_USERNAME = "SELECT `p`.*, `d`.*  FROM `user` `d` JOIN `person` p ON `d`.`id` = `p`.`id` AND `p`.`id` in (SELECT `id` FROM `person` WHERE `username` = ?)";
+	
+	/** The find user by username and password. */
 	private final String FIND_USER_BY_USERNAME_AND_PASSWORD = "SELECT `p`.*, `d`.*  FROM `user` `d` JOIN `person` p ON `d`.`id` = `p`.`id` AND `p`.`id` in (SELECT `id` FROM `person` WHERE `username` = ? and `password` = ?)";
+	
+	/** The update user. */
 	private final String UPDATE_USER = "UPDATE `user` SET `user_agreement`= ? WHERE `id` = ?";
+	
+	/** The delete user. */
 	private final String DELETE_USER = "DELETE FROM `user` WHERE `id` = ?";
 
+	/**
+	 * Instantiates a new user dao.
+	 */
 	private UserDao() {
 	}
 
+	/**
+	 * Gets the single instance of UserDao.
+	 *
+	 * @return single instance of UserDao
+	 */
 	public static UserDao getInstance() {
 		if (instance == null)
 			instance = new UserDao();
 		return instance;
 	}
 
+	/**
+	 * Creates the user.
+	 *
+	 * @param user the user
+	 */
 	@Override
 	public void createUser(User user) {
 		personInstance = PersonDao.getInstance();
@@ -60,6 +99,11 @@ public class UserDao implements UserImpl {
 
 	}
 
+	/**
+	 * Find all users.
+	 *
+	 * @return the collection
+	 */
 	@Override
 	public Collection<User> findAllUsers() {
 		try {
@@ -76,6 +120,12 @@ public class UserDao implements UserImpl {
 		return null;
 	}
 
+	/**
+	 * Find user by id.
+	 *
+	 * @param userId the user id
+	 * @return the user
+	 */
 	@Override
 	public User findUserById(int userId) {
 		try {
@@ -92,6 +142,12 @@ public class UserDao implements UserImpl {
 		return null;
 	}
 
+	/**
+	 * Find user by username.
+	 *
+	 * @param username the username
+	 * @return the user
+	 */
 	@Override
 	public User findUserByUsername(String username) {
 		try {
@@ -108,6 +164,13 @@ public class UserDao implements UserImpl {
 		return null;
 	}
 
+	/**
+	 * Find user by credentials.
+	 *
+	 * @param username the username
+	 * @param password the password
+	 * @return the user
+	 */
 	@Override
 	public User findUserByCredentials(String username, String password) {
 		try {
@@ -125,6 +188,13 @@ public class UserDao implements UserImpl {
 		return null;
 	}
 
+	/**
+	 * Update user.
+	 *
+	 * @param userId the user id
+	 * @param user the user
+	 * @return the int
+	 */
 	@Override
 	public int updateUser(int userId, User user) {
 		try {
@@ -144,6 +214,12 @@ public class UserDao implements UserImpl {
 		return 0;
 	}
 
+	/**
+	 * Delete user.
+	 *
+	 * @param userId the user id
+	 * @return the int
+	 */
 	@Override
 	public int deleteUser(int userId) {
 		try {

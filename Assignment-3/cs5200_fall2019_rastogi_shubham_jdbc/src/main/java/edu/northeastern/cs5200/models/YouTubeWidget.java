@@ -27,6 +27,9 @@ public class YouTubeWidget extends Widget {
 	 * @param cssStyle the css style
 	 * @param text the text
 	 * @param order the order
+	 * @param url the url
+	 * @param shareble the shareble
+	 * @param expandable the expandable
 	 */
 	public YouTubeWidget(int id, String name, int width, int height, String cssClass, String cssStyle, String text,
 			int order,String url,boolean shareble,boolean expandable) {

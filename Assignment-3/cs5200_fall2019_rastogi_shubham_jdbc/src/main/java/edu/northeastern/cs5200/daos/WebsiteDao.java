@@ -10,28 +10,64 @@ import java.util.Collection;
 import edu.northeastern.cs5200.Utility;
 import edu.northeastern.cs5200.models.Website;
 
+/**
+ * The Class WebsiteDao.
+ */
 public class WebsiteDao implements WebsiteImpl {
 
+	/** The instance. */
 	private static WebsiteDao instance;
+	
+	/** The connection. */
 	private Connection connection;
+	
+	/** The prep statement. */
 	private PreparedStatement prepStatement;
+	
+	/** The result set. */
 	private ResultSet resultSet;
+	
+	/** The create website. */
 	private final String CREATE_WEBSITE = "INSERT INTO `website`(`id`,`name`,`description`,`visits`,`created`,`updated`,`creator_id`) VALUES (?,?,?,?,?,?,?)";
+	
+	/** The find all website. */
 	private final String FIND_ALL_WEBSITE = "SELECT *  FROM `website`";
+	
+	/** The find website by developer id. */
 	private final String FIND_WEBSITE_BY_DEVELOPER_ID = "SELECT *  FROM `website` WHERE `creator_id` = ?";
+	
+	/** The find website by id. */
 	private final String FIND_WEBSITE_BY_ID = "SELECT *  FROM `website` WHERE `id` = ?";
+	
+	/** The update website. */
 	private final String UPDATE_WEBSITE = "UPDATE `website` SET `name`= ?,`description` = ?,`visits`=?, `created`=?, `updated`=?, `creator_id`=?  WHERE `id` = ?";
+	
+	/** The delete website. */
 	private final String DELETE_WEBSITE = "DELETE FROM `website` WHERE `id` = ?";
 	
+	/**
+	 * Instantiates a new website dao.
+	 */
 	private WebsiteDao() {
 	}
 
+	/**
+	 * Gets the single instance of WebsiteDao.
+	 *
+	 * @return single instance of WebsiteDao
+	 */
 	public static WebsiteDao getInstance() {
 		if (instance == null)
 			instance = new WebsiteDao();
 		return instance;
 	}
 
+	/**
+	 * Creates the website for developer.
+	 *
+	 * @param developerId the developer id
+	 * @param website the website
+	 */
 	@Override
 	public void createWebsiteForDeveloper(int developerId, Website website) {
 		try {
@@ -50,6 +86,11 @@ public class WebsiteDao implements WebsiteImpl {
 		}
 	}
 
+	/**
+	 * Find all websites.
+	 *
+	 * @return the collection
+	 */
 	@Override
 	public Collection<Website> findAllWebsites() {
 		try {
@@ -66,6 +107,12 @@ public class WebsiteDao implements WebsiteImpl {
 		return null;
 	}
 
+	/**
+	 * Find websites for developer.
+	 *
+	 * @param developerId the developer id
+	 * @return the collection
+	 */
 	@Override
 	public Collection<Website> findWebsitesForDeveloper(int developerId) {
 		try {
@@ -81,6 +128,12 @@ public class WebsiteDao implements WebsiteImpl {
 		return null;
 	}
 
+	/**
+	 * Find website by id.
+	 *
+	 * @param websiteId the website id
+	 * @return the website
+	 */
 	@Override
 	public Website findWebsiteById(int websiteId) {
 		try {
@@ -97,6 +150,13 @@ public class WebsiteDao implements WebsiteImpl {
 		return null;
 	}
 
+	/**
+	 * Update website.
+	 *
+	 * @param websiteId the website id
+	 * @param website the website
+	 * @return the int
+	 */
 	@Override
 	public int updateWebsite(int websiteId, Website website) {
 		try {
@@ -116,6 +176,12 @@ public class WebsiteDao implements WebsiteImpl {
 		return 0;
 	}
 
+	/**
+	 * Delete website.
+	 *
+	 * @param websiteId the website id
+	 * @return the int
+	 */
 	@Override
 	public int deleteWebsite(int websiteId) {
 		try {

@@ -12,7 +12,8 @@ public interface PhoneImpl {
 	/**
 	 * Adds the phone to person.
 	 *
-	 * @param person the person
+	 * @param phone the phone
+	 * @param personId the person id
 	 */
 	void addPhoneToPerson(Phone phone,int personId);
 

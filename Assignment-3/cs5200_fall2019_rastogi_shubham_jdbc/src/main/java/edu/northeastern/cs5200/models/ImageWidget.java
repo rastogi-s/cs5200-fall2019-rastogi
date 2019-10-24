@@ -19,6 +19,7 @@ public class ImageWidget extends Widget {
 	 * @param cssStyle the css style
 	 * @param text the text
 	 * @param order the order
+	 * @param src the src
 	 */
 	public ImageWidget(int id, String name, int width, int height, String cssClass, String cssStyle, String text,
 			int order,String src) {

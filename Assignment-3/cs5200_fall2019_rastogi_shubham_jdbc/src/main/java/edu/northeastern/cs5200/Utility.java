@@ -25,9 +25,20 @@ import edu.northeastern.cs5200.models.Widget;
 import edu.northeastern.cs5200.models.WidgetType;
 import edu.northeastern.cs5200.models.YouTubeWidget;
 
+/**
+ * The Class Utility.
+ */
 public class Utility {
+	
+	/** The connection. */
 	private static Connection connection;
 
+	/**
+	 * Gets the collection of persons.
+	 *
+	 * @param res the res
+	 * @return the collection of persons
+	 */
 	public static Collection<Person> getCollectionOfPersons(ResultSet res) {
 
 		Collection<Person> persons = new ArrayList<>();
@@ -53,6 +64,12 @@ public class Utility {
 
 	}
 
+	/**
+	 * Gets the collection of developers.
+	 *
+	 * @param resultSet the result set
+	 * @return the collection of developers
+	 */
 	public static Collection<Developer> getCollectionOfDevelopers(ResultSet resultSet) {
 		Collection<Developer> developers = new ArrayList<>();
 		try {
@@ -76,6 +93,12 @@ public class Utility {
 		return null;
 	}
 
+	/**
+	 * Gets the collection of users.
+	 *
+	 * @param resultSet the result set
+	 * @return the collection of users
+	 */
 	public static Collection<User> getCollectionOfUsers(ResultSet resultSet) {
 		Collection<User> users = new ArrayList<>();
 		try {
@@ -99,6 +122,12 @@ public class Utility {
 		return null;
 	}
 
+	/**
+	 * Gets the collection of websites.
+	 *
+	 * @param resultSet the result set
+	 * @return the collection of websites
+	 */
 	public static Collection<Website> getCollectionOfWebsites(ResultSet resultSet) {
 		Collection<Website> websites = new ArrayList<>();
 		try {
@@ -125,6 +154,12 @@ public class Utility {
 		return null;
 	}
 
+	/**
+	 * Fetch role id.
+	 *
+	 * @param role the role
+	 * @return the int
+	 */
 	public static int fetchRoleId(String role) {
 		final String FIND_ROLE_ID = "SELECT `id` FROM `role` WHERE `name` = ? ";
 		try {
@@ -140,6 +175,12 @@ public class Utility {
 		return -1;
 	}
 
+	/**
+	 * Gets the role id.
+	 *
+	 * @param resultSet the result set
+	 * @return the role id
+	 */
 	private static int getRoleId(ResultSet resultSet) {
 		try {
 			if (resultSet.next()) {
@@ -152,6 +193,12 @@ public class Utility {
 		return -1;
 	}
 
+	/**
+	 * Gets the collection of pages.
+	 *
+	 * @param resultSet the result set
+	 * @return the collection of pages
+	 */
 	public static Collection<Page> getCollectionOfPages(ResultSet resultSet) {
 		Collection<Page> pages = new ArrayList<>();
 		try {
@@ -178,6 +225,12 @@ public class Utility {
 		return null;
 	}
 
+	/**
+	 * Gets the collection of widgets.
+	 *
+	 * @param resultSet the result set
+	 * @return the collection of widgets
+	 */
 	public static Collection<Widget> getCollectionOfWidgets(ResultSet resultSet) {
 		Collection<Widget> widgets = new ArrayList<>();
 		try {
@@ -205,6 +258,13 @@ public class Utility {
 		return null;
 	}
 
+	/**
+	 * Gets the widget object.
+	 *
+	 * @param resultSet the result set
+	 * @return the widget object
+	 * @throws SQLException the SQL exception
+	 */
 	private static Widget getWidgetObject(ResultSet resultSet) throws SQLException {
 		String dtype = resultSet.getString("dtype");
 		if (dtype != null && !dtype.isBlank()) {
@@ -230,6 +290,12 @@ public class Utility {
 		return null;
 	}
 
+	/**
+	 * Gets the collection of phone.
+	 *
+	 * @param resultSet the result set
+	 * @return the collection of phone
+	 */
 	public static Collection<Phone> getCollectionOfPhone(ResultSet resultSet) {
 		Collection<Phone> phones = new ArrayList<>();
 		try {
@@ -255,6 +321,12 @@ public class Utility {
 		return null;
 	}
 
+	/**
+	 * Gets the collection of address.
+	 *
+	 * @param resultSet the result set
+	 * @return the collection of address
+	 */
 	public static Collection<Address> getCollectionOfAddress(ResultSet resultSet) {
 		Collection<Address> addresses = new ArrayList<>();
 		try {
@@ -280,5 +352,24 @@ public class Utility {
 		}
 		return null;
 	}
+	
+	/**
+	 * Display user.
+	 *
+	 * @param s the user
+	 */
+	public static void displayUser(User s) {
+		System.out.println(s);
+	}
+	
+	/**
+	 * Display developer.
+	 *
+	 * @param d the developer
+	 */
+	public static void displayDeveloper(Developer d) {
+		System.out.println(d);
+	}
+
 
 }

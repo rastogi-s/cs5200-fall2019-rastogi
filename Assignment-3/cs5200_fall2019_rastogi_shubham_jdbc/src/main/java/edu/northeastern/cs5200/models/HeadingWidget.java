@@ -19,6 +19,7 @@ public class HeadingWidget extends Widget {
 	 * @param cssStyle the css style
 	 * @param text the text
 	 * @param order the order
+	 * @param size the size
 	 */
 	public HeadingWidget(int id, String name, int width, int height, String cssClass, String cssStyle, String text,
 			int order, int size) {

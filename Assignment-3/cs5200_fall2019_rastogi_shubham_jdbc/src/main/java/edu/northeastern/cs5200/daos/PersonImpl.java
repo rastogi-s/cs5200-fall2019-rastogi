@@ -4,6 +4,9 @@ import java.util.Collection;
 
 import edu.northeastern.cs5200.models.Person;
 
+/**
+ * The Interface PersonImpl.
+ */
 public interface PersonImpl {
 
 	/**

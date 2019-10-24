@@ -123,6 +123,11 @@ public class Developer extends Person {
 		this.websites.remove(website);
 	}
 
+	/**
+	 * To string.
+	 *
+	 * @return the string
+	 */
 	@Override
 	public String toString() {
 		return "Developer [developerKey=" + developerKey + ", websites=" + websites + ", getId()=" + getId()

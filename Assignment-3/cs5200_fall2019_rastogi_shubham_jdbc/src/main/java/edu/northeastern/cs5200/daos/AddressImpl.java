@@ -12,7 +12,8 @@ public interface AddressImpl {
 	/**
 	 * Adds the address to person.
 	 *
-	 * @param person the person
+	 * @param address the address
+	 * @param personId the person id
 	 */
 	void addAddressToPerson(Address address,int personId);
 

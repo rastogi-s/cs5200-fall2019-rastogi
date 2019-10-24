@@ -26,43 +26,46 @@ import edu.northeastern.cs5200.models.Website;
 import edu.northeastern.cs5200.models.Widget;
 import edu.northeastern.cs5200.models.YouTubeWidget;
 
+/**
+ * The Class hw_jdbc_rastogi_shubham.
+ */
 public class hw_jdbc_rastogi_shubham {
 
+	/** The developer DAO. */
 	private static DeveloperDao developerDAO = DeveloperDao.getInstance();
+	
+	/** The user DAO. */
 	private static UserDao userDAO = UserDao.getInstance();
+	
+	/** The website DAO. */
 	private static WebsiteDao websiteDAO = WebsiteDao.getInstance();
+	
+	/** The page DAO. */
 	private static PageDao pageDAO = PageDao.getInstance();
+	
+	/** The role DAO. */
 	private static RoleDao roleDAO = RoleDao.getInstance();
+	
+	/** The priviledge DAO. */
 	private static PriviledgeDao priviledgeDAO = PriviledgeDao.getInstance();
+	
+	/** The widget DAO. */
 	private static WidgetDao widgetDAO = WidgetDao.getInstance();
+	
+	/** The phone DAO. */
 	private static PhoneDao phoneDAO = PhoneDao.getInstance();
+	
+	/** The address DAO. */
 	private static AddressDao addressDAO = AddressDao.getInstance();
 
-	/**
-	 * Create the following developers and users. Insert into the correct tables
-	 * depending on the type
-	 * 
-	 */
 
 	/**
-	 * Create the following web sites for the developers above. For both the created
-	 * field and updated field, use the date your assignment will be graded, e.g.,
-	 * do not hardcode it
+	 * The main method.
+	 *
+	 * @param args the arguments
 	 */
-
-	/**
-	 * Create the following pages for the web sites above. Use the semester's start
-	 * date for the created field. Use the assignment's due date for the updated
-	 * field.
-	 * 
-	 */
-
-	/**
-	 * Create the following widgets for the pages shown.
-	 * 
-	 */
-
 	public static void main(String[] args) {
+		/** create developers */ 
 		Developer alice = new Developer("4321rewq", 12, "Alice", "Wonder", "alice", "alice", "alice@wonder.com", null);
 		Developer bob = new Developer("5432trew", 23, "Bob", "Marley", "bob", "bob", "bob@marley.com", null);
 		Developer charlie = new Developer("4321rewq", 34, "Charles", "Garcia", "charlie", "charlie", "chuch@garcia.com",
@@ -75,6 +78,7 @@ public class hw_jdbc_rastogi_shubham {
 		System.out.println(developerDAO.findDeveloperByCredentials("bob", "bob"));
 		System.out.println(developerDAO.findDeveloperByUsername("charlie"));
 
+		/** create users */
 		User dan = new User(45, "Dan", "Martin", "dan", "dan", "dan@martin.com", null);
 		User ed = new User(56, "Ed", "Karaz", "ed", "ed", "ed@kar.com", null);
 		userDAO.createUser(dan);
@@ -83,7 +87,9 @@ public class hw_jdbc_rastogi_shubham {
 		System.out.println(userDAO.findUserById(45));
 		System.out.println(userDAO.findUserByCredentials("ed", "ed"));
 		System.out.println(userDAO.findUserByUsername("dan"));
-
+		
+		
+		/** create websites */
 		Date curr = new Date(System.currentTimeMillis());
 		Website facebook = new Website(123, "Facebook", "an online social media and social networking service", curr,
 				curr, 1234234);
@@ -98,6 +104,9 @@ public class hw_jdbc_rastogi_shubham {
 		Website gizmodo = new Website(678, "Gizmodo",
 				"a design, technology, science and science fiction website that also writes articles on politics", curr,
 				curr, 4322345);
+		
+		/** Add roles and priviledges */
+		
 		/** facebook */
 		websiteDAO.createWebsiteForDeveloper(alice.getId(), facebook);
 		roleDAO.assignWebsiteRole(alice.getId(), facebook.getId(),
@@ -251,6 +260,9 @@ public class hw_jdbc_rastogi_shubham {
 		priviledgeDAO.assignWebsitePriviledge(bob.getId(), gizmodo.getId(), Priviledge.UPDATE.toString().toLowerCase());
 		priviledgeDAO.assignWebsitePriviledge(bob.getId(), gizmodo.getId(), Priviledge.DELETE.toString().toLowerCase());
 		priviledgeDAO.assignWebsitePriviledge(bob.getId(), gizmodo.getId(), Priviledge.READ.toString().toLowerCase());
+		
+		
+		/** create pages */
 
 		Date created = Date.valueOf("2019-09-04");
 		Date updated = Date.valueOf("2019-10-20");
@@ -262,6 +274,8 @@ public class hw_jdbc_rastogi_shubham {
 				456776);
 		Page profile = new Page(567, "Profile", "Users can configure their personal information", created, updated,
 				567878);
+		
+		/** add roles and priviledges for pages */
 
 		/** CNET home page */
 		pageDAO.createPageForWebsite(cnet.getId(), home);
@@ -348,7 +362,7 @@ public class hw_jdbc_rastogi_shubham {
 		priviledgeDAO.assignPagePriviledge(alice.getId(), profile.getId(), Priviledge.UPDATE.toString().toLowerCase()); // update
 		priviledgeDAO.assignPagePriviledge(alice.getId(), profile.getId(), Priviledge.CREATE.toString().toLowerCase()); // create
 
-		/** widgets */
+		/** create widgets */
 		Widget head123 = new HeadingWidget(1, "head123", 0, 0, null, null, "Welcome", 0, 0);
 		Widget post234 = new HtmlWidget(2, "post234", 0, 0, null, null, "<p>Lorem</p>", 0, null);
 		Widget head345 = new HeadingWidget(3, "head345", 0, 0, null, null, "Hi", 1, 0);
@@ -399,6 +413,8 @@ public class hw_jdbc_rastogi_shubham {
 		addressDAO.addAddressToPerson(bobAddress1, bob.getId());
 		addressDAO.addAddressToPerson(bobAddress2, bob.getId());
 		addressDAO.addAddressToPerson(charlieAddressPrimary, charlie.getId());
+		
+		/** --------------------------------------------------------------------------------------------- */
 
 		/** Implement Updates */
 
@@ -449,12 +465,14 @@ public class hw_jdbc_rastogi_shubham {
 				charlieRoleId = roleDAO.findPageRoleIdWebsiteDeveloper(pId, charlie.getId());
 				bobRoleId = roleDAO.findPageRoleIdWebsiteDeveloper(pId, bob.getId());
 
-				System.out.println(charlieRoleId + "," + bobRoleId + "," + pId);
 			}
 
 		}
 
 		roleDAO.swapRoles(charlie.getId(), charlieRoleId, bob.getId(), bobRoleId, pId);
+		
+		/** --------------------------------------------------------------------------------------------- */
+
 
 		/** Implement Deletes */
 
@@ -482,7 +500,6 @@ public class hw_jdbc_rastogi_shubham {
 
 		for (Page page : pageDAO.findPagesForWebsite(wikipedia.getId())) {
 			if (date.compareTo(page.getUpdated()) < 0) {
-				System.out.println(date.compareTo(page.getUpdated()));
 				date = page.getUpdated();
 				pageId = page.getId();
 			}
