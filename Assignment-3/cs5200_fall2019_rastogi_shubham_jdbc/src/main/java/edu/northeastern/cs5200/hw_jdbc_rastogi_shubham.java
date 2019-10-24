@@ -435,82 +435,82 @@ public class hw_jdbc_rastogi_shubham {
 			}
 		}
 
-//		// 3. Update page - Append 'CNET - ' to the beginning of all CNET's page titles
-//		for (Page page : pageDAO.findPagesForWebsite(cnet.getId())) {
-//			page.setTitle("CNET" + page.getTitle());
-//			pageDAO.updatePage(page.getId(), page);
-//		}
-//
-//		// 4. Update roles - Swap Charlie's and Bob's role in CNET's Home page
-//		int charlieRoleId = -1, bobRoleId = -1, pId = -1;
-//		for (Page page : pageDAO.findPagesForWebsite(cnet.getId())) {
-//			if (page.getTitle().toLowerCase().contains("home")) {
-//				pId = page.getId();
-//				charlieRoleId = roleDAO.findPageRoleIdWebsiteDeveloper(pId, charlie.getId());
-//				bobRoleId = roleDAO.findPageRoleIdWebsiteDeveloper(pId, bob.getId());
-//
-//				System.out.println(charlieRoleId + "," + bobRoleId + "," + pId);
-//			}
-//
-//		}
-//
-//		roleDAO.swapRoles(charlie.getId(), charlieRoleId, bob.getId(), bobRoleId, pId);
-//
-//		/** Implement Deletes */
-//
-//		// 1. Delete developer - Delete Alice's primary address
-//		for (Address address : addressDAO.findAllAddresssForPerson(alice.getId())) {
-//			if (address.isPrimary())
-//				addressDAO.deleteAddress(address.getId());
-//		}
-//
-//		// 2. Delete widget - Remove the last widget in the Contact page.
-//		// The last widget is the one with the highest value in the order field
-//		int highest = Integer.MIN_VALUE, widgetId = -1;
-//		for (Widget widget : widgetDAO.findWidgetsForPage(contact.getId())) {
-//			if (widget.getOrder() > highest) {
-//				widgetId = widget.getId();
-//				highest = widget.getOrder();
-//			}
-//		}
-//
-//		widgetDAO.deleteWidget(widgetId);
-//
-//		// 3. Delete page - Remove the last updated page in Wikipedia
-//		int pageId = -1;
-//		Date date = new Date(0);
-//
-//		for (Page page : pageDAO.findPagesForWebsite(wikipedia.getId())) {
-//			if (date.compareTo(page.getUpdated()) < 0) {
-//				System.out.println(date.compareTo(page.getUpdated()));
-//				date = page.getUpdated();
-//				pageId = page.getId();
-//			}
-//		}
-//
-//		for (Widget widget : widgetDAO.findWidgetsForPage(pageId)) {
-//			widgetDAO.deleteWidget(widget.getId());
-//		}
-//
-//		priviledgeDAO.deletePagePriviledgeForPage(pageId);
-//		roleDAO.deletePageRoleForPage(pageId);
-//		pageDAO.deletePage(pageId);
-//
-//		// 4. Delete website - Remove the CNET web site, as well as all related
-//		// roles and privileges relating developers to the Website and Pages
-//
-//		for (Page page : pageDAO.findPagesForWebsite(cnet.getId())) {
-//			for (Widget widget : widgetDAO.findWidgetsForPage(page.getId())) {
-//				widgetDAO.deleteWidget(widget.getId());
-//			}
-//			priviledgeDAO.deletePagePriviledgeForPage(page.getId());
-//			roleDAO.deletePageRoleForPage(page.getId());
-//			pageDAO.deletePage(page.getId());
-//		}
-//
-//		priviledgeDAO.deleteWebsitePriviledgeForWebiste(cnet.getId());
-//		roleDAO.deleteWebisteRoleForWebsite(cnet.getId());
-//		websiteDAO.deleteWebsite(cnet.getId()); 
+		// 3. Update page - Append 'CNET - ' to the beginning of all CNET's page titles
+		for (Page page : pageDAO.findPagesForWebsite(cnet.getId())) {
+			page.setTitle("CNET" + page.getTitle());
+			pageDAO.updatePage(page.getId(), page);
+		}
+
+		// 4. Update roles - Swap Charlie's and Bob's role in CNET's Home page
+		int charlieRoleId = -1, bobRoleId = -1, pId = -1;
+		for (Page page : pageDAO.findPagesForWebsite(cnet.getId())) {
+			if (page.getTitle().toLowerCase().contains("home")) {
+				pId = page.getId();
+				charlieRoleId = roleDAO.findPageRoleIdWebsiteDeveloper(pId, charlie.getId());
+				bobRoleId = roleDAO.findPageRoleIdWebsiteDeveloper(pId, bob.getId());
+
+				System.out.println(charlieRoleId + "," + bobRoleId + "," + pId);
+			}
+
+		}
+
+		roleDAO.swapRoles(charlie.getId(), charlieRoleId, bob.getId(), bobRoleId, pId);
+
+		/** Implement Deletes */
+
+		// 1. Delete developer - Delete Alice's primary address
+		for (Address address : addressDAO.findAllAddresssForPerson(alice.getId())) {
+			if (address.isPrimary())
+				addressDAO.deleteAddress(address.getId());
+		}
+
+		// 2. Delete widget - Remove the last widget in the Contact page.
+		// The last widget is the one with the highest value in the order field
+		int highest = Integer.MIN_VALUE, widgetId = -1;
+		for (Widget widget : widgetDAO.findWidgetsForPage(contact.getId())) {
+			if (widget.getOrder() > highest) {
+				widgetId = widget.getId();
+				highest = widget.getOrder();
+			}
+		}
+
+		widgetDAO.deleteWidget(widgetId);
+
+		// 3. Delete page - Remove the last updated page in Wikipedia
+		int pageId = -1;
+		Date date = new Date(0);
+
+		for (Page page : pageDAO.findPagesForWebsite(wikipedia.getId())) {
+			if (date.compareTo(page.getUpdated()) < 0) {
+				System.out.println(date.compareTo(page.getUpdated()));
+				date = page.getUpdated();
+				pageId = page.getId();
+			}
+		}
+
+		for (Widget widget : widgetDAO.findWidgetsForPage(pageId)) {
+			widgetDAO.deleteWidget(widget.getId());
+		}
+
+		priviledgeDAO.deletePagePriviledgeForPage(pageId);
+		roleDAO.deletePageRoleForPage(pageId);
+		pageDAO.deletePage(pageId);
+
+		// 4. Delete website - Remove the CNET web site, as well as all related
+		// roles and privileges relating developers to the Website and Pages
+
+		for (Page page : pageDAO.findPagesForWebsite(cnet.getId())) {
+			for (Widget widget : widgetDAO.findWidgetsForPage(page.getId())) {
+				widgetDAO.deleteWidget(widget.getId());
+			}
+			priviledgeDAO.deletePagePriviledgeForPage(page.getId());
+			roleDAO.deletePageRoleForPage(page.getId());
+			pageDAO.deletePage(page.getId());
+		}
+
+		priviledgeDAO.deleteWebsitePriviledgeForWebiste(cnet.getId());
+		roleDAO.deleteWebisteRoleForWebsite(cnet.getId());
+		websiteDAO.deleteWebsite(cnet.getId()); 
 	}
 
 }

@@ -12,15 +12,15 @@ public class Connection {
 	private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 	
 	/** The Constant URL. */
-	//private static final String URL = "jdbc:mysql://cs5200-fall2019-rastogi.caobcohwr5ry.us-east-1.rds.amazonaws.com/cs5200_fall2019_rastogi_assign3";
-	private static final String URL = "jdbc:mysql://localhost/cs5200_fall2019_rastogi-assign3";
+	private static final String URL = "jdbc:mysql://cs5200-fall2019-rastogi.caobcohwr5ry.us-east-1.rds.amazonaws.com/cs5200_fall2019_rastogi-assign3";
+	//private static final String URL = "jdbc:mysql://localhost/cs5200_fall2019_rastogi-assign3";
 	
 	
 	/** The Constant USER. */
-	private static final String USER = "root";
+	private static final String USER = "admin";
 	
 	/** The Constant PASSWORD. */
-	private static final String PASSWORD = "root";
+	private static final String PASSWORD = "rastogis";
 	
 	/** The db connection. */
 	private static java.sql.Connection dbConnection = null;
